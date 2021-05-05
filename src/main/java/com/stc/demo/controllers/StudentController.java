@@ -19,6 +19,7 @@ public class StudentController {
         studentRepository.save(student);
     }
 
+
     @GetMapping(path = "/all")
     public @ResponseBody Iterable < Student > getAllUsers() {
         return studentRepository.findAll();
