@@ -25,6 +25,18 @@ public class ClassController {
         classRepository.save(classroom);
     }
 
+    @PutMapping(path = "/update")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void updateClass(@RequestBody Class classroom) {
+        classRepository.save(classroom);
+    }
+
+    @DeleteMapping(value = "/delete/{classCode}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteClass(@PathVariable Integer class_code) {
+        classRepository.deleteById(class_code);
+    }
+
     @GetMapping(path = "/all")
     public @ResponseBody Iterable < Class > getAllClasses() {
         return classRepository.findAll();

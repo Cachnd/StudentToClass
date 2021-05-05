@@ -19,10 +19,23 @@ public class StudentController {
         studentRepository.save(student);
     }
 
+    @PutMapping(path = "/update")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void updateStudent(@RequestBody Student student) {
+        studentRepository.save(student);
+    }
+
+    @DeleteMapping(value = "/delete/{studentId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteStudent(@PathVariable Integer student_id) {
+        studentRepository.deleteById(student_id);
+    }
 
     @GetMapping(path = "/all")
     public @ResponseBody Iterable < Student > getAllUsers() {
         return studentRepository.findAll();
     }
+
+
 
 }
