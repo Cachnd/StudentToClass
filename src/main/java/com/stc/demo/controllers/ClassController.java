@@ -47,8 +47,8 @@ public class ClassController {
     @ApiOperation(value="Deletes a Class", response = Class.class)
     @DeleteMapping(value = "/delete/{classCode}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteClass(@PathVariable Integer class_code) {
-        classRepository.deleteById(class_code);
+    public void deleteClass(@PathVariable Integer classCode) {
+        classRepository.deleteById(classCode);
     }
 
     @ApiOperation(value="View a list with all Classes", response = Class.class)
@@ -58,7 +58,7 @@ public class ClassController {
     }
 
     @ApiOperation(value="Assign a Student to a Class", response = Class.class)
-    @PostMapping(path = "/assign")
+        @PostMapping(path = "/assign")
     @ResponseStatus(HttpStatus.CREATED)
     public void assignStudentToClass(@RequestBody StudentClassDTO studentClassDTO){
         classService.assignStudentToClass(studentClassDTO);

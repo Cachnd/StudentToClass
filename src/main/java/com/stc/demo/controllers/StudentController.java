@@ -45,8 +45,8 @@ public class StudentController {
     @ApiOperation(value="Deletes a Student", response = void.class)
     @DeleteMapping(value = "/delete/{studentId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteStudent(@PathVariable Integer student_id) {
-        studentRepository.deleteById(student_id);
+    public void deleteStudent(@PathVariable Integer studentId) {
+        studentRepository.deleteById(studentId);
     }
 
     @ApiOperation(value="View a list with all Students", response = Student.class)
