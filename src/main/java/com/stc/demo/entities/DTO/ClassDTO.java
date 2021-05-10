@@ -1,4 +1,6 @@
-package com.stc.demo.entities;
+package com.stc.demo.entities.DTO;
+
+import com.stc.demo.entities.Class;
 
 import javax.persistence.*;
 import java.util.HashSet;

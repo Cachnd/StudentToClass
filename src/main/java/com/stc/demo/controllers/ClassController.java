@@ -2,6 +2,9 @@ package com.stc.demo.controllers;
 
 import com.stc.demo.entities.*;
 import com.stc.demo.entities.Class;
+import com.stc.demo.entities.DTO.ClassDTO;
+import com.stc.demo.entities.DTO.StudentClassDTO;
+import com.stc.demo.entities.DTO.StudentDTO;
 import com.stc.demo.repositories.ClassRepository;
 import com.stc.demo.repositories.StudentRepository;
 import com.stc.demo.services.ClassService;

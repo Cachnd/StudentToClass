@@ -1,9 +1,9 @@
 package com.stc.demo.controllers;
 
-import com.stc.demo.entities.ClassDTO;
+import com.stc.demo.entities.DTO.ClassDTO;
 import com.stc.demo.entities.Student;
 import com.stc.demo.entities.Class;
-import com.stc.demo.entities.StudentDTO;
+import com.stc.demo.entities.DTO.StudentDTO;
 import com.stc.demo.repositories.StudentRepository;
 import com.stc.demo.services.StudentService;
 import io.swagger.annotations.ApiOperation;

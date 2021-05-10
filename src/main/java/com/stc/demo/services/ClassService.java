@@ -2,6 +2,9 @@ package com.stc.demo.services;
 
 import com.stc.demo.entities.*;
 import com.stc.demo.entities.Class;
+import com.stc.demo.entities.DTO.ClassDTO;
+import com.stc.demo.entities.DTO.StudentClassDTO;
+import com.stc.demo.entities.DTO.StudentDTO;
 import com.stc.demo.repositories.ClassRepository;
 import com.stc.demo.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
