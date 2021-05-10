@@ -52,9 +52,11 @@ public class ClassService {
     public void assignStudentToClass(StudentClassDTO studentClassDTO){
         Student student = studentService.getStudentById(studentClassDTO.getStudent_id());
         Class classroom =  getClassById(studentClassDTO.getClass_code());
-        student.assignClass(classroom);
-        classroom.addStudent(student);
-        studentRepository.save(student);
+        if (!student.getAssignedClasses().contains(classroom)){
+            student.assignClass(classroom);
+            classroom.addStudent(student);
+            studentRepository.save(student);
+        }
     }
 
     public StudentDTO[] getAllStudents(Integer classCode){
