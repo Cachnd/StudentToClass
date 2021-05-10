@@ -52,4 +52,8 @@ public class Student {
     public void removeClass(Class classroom){
         assignedClasses.remove(classroom);
     }
+
+    public Set<Class> getAssignedClasses() {
+        return assignedClasses;
+    }
 }

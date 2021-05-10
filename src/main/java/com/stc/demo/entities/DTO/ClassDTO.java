@@ -1,25 +1,26 @@
-package com.stc.demo.entities;
+package com.stc.demo.entities.DTO;
+
+import com.stc.demo.entities.Class;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "classes")
-public class Class {
+public class ClassDTO {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer class_code;
 
     private String title;
 
     private String description;
 
-    @ManyToMany
-    Set<Student> coursing = new HashSet<>();
+    public ClassDTO() {
+    }
 
-    public Class() {
+    public ClassDTO(Class classroom){
+        this.class_code = classroom.getCode();
+        this.title = classroom.getTitle();
+        this.description = classroom.getDescription();
     }
 
     public Integer getCode() {
@@ -42,15 +43,4 @@ public class Class {
         this.description = description;
     }
 
-    public void addStudent(Student student){
-        coursing.add(student);
-    }
-
-    public void removeStudent(Student student){
-        coursing.remove(student);
-    }
-
-    public Set<Student> getCoursing() {
-        return coursing;
-    }
 }

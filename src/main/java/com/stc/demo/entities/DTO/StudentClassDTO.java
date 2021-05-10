@@ -1,4 +1,4 @@
-package com.stc.demo.entities;
+package com.stc.demo.entities.DTO;
 
 public class StudentClassDTO {
 
