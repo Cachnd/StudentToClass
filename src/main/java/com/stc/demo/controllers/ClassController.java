@@ -1,8 +1,7 @@
 package com.stc.demo.controllers;
 
+import com.stc.demo.entities.*;
 import com.stc.demo.entities.Class;
-import com.stc.demo.entities.Student;
-import com.stc.demo.entities.StudentClassDTO;
 import com.stc.demo.repositories.ClassRepository;
 import com.stc.demo.repositories.StudentRepository;
 import com.stc.demo.services.ClassService;
@@ -33,8 +32,9 @@ public class ClassController {
 
     @ApiOperation(value="View data from a single Class", response = Student.class)
     @GetMapping(path = "/get/{classId}")
-    public @ResponseBody Class getClassById(@PathVariable Integer classId) {
-        return classService.getClassById(classId);
+    public @ResponseBody
+    ClassDTO getClassById(@PathVariable Integer classId) {
+        return classService.getClassDTOById(classId);
     }
 
     @ApiOperation(value="Update a Class data", response = Class.class)
@@ -53,8 +53,8 @@ public class ClassController {
 
     @ApiOperation(value="View a list with all Classes", response = Class.class)
     @GetMapping(path = "/all")
-    public @ResponseBody Iterable < Class > getAllClasses() {
-        return classRepository.findAll();
+    public @ResponseBody ClassDTO[] getAllClasses() {
+        return classService.getAll();
     }
 
     @ApiOperation(value="Assign a Student to a Class", response = Class.class)
@@ -62,5 +62,11 @@ public class ClassController {
     @ResponseStatus(HttpStatus.CREATED)
     public void assignStudentToClass(@RequestBody StudentClassDTO studentClassDTO){
         classService.assignStudentToClass(studentClassDTO);
+    }
+
+    @ApiOperation(value="View all Students in a Class", response = Class.class)
+    @GetMapping(path = "/{classCode}/students")
+    public @ResponseBody StudentDTO[] getStudents(@PathVariable Integer classCode) {
+        return classService.getAllStudents(classCode);
     }
 }

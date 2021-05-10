@@ -1,16 +1,16 @@
 package com.stc.demo.controllers;
 
+import com.stc.demo.entities.ClassDTO;
 import com.stc.demo.entities.Student;
+import com.stc.demo.entities.Class;
+import com.stc.demo.entities.StudentDTO;
 import com.stc.demo.repositories.StudentRepository;
 import com.stc.demo.services.StudentService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.ResourceAccessException;
 
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/students")
@@ -31,8 +31,8 @@ public class StudentController {
 
     @ApiOperation(value="View data from a single Student", response = Student.class)
     @GetMapping(path = "/get/{studentId}")
-    public @ResponseBody Student getStudentById(@PathVariable Integer studentId) {
-        return studentService.getStudentById(studentId);
+    public @ResponseBody StudentDTO getStudentById(@PathVariable Integer studentId) {
+        return studentService.getStudentDTOById(studentId);
     }
 
     @ApiOperation(value="Updates a Student data", response = Student.class)
@@ -51,10 +51,14 @@ public class StudentController {
 
     @ApiOperation(value="View a list with all Students", response = Student.class)
     @GetMapping(path = "/all")
-    public @ResponseBody Iterable < Student > getAllUsers() {
-        return studentRepository.findAll();
+    public @ResponseBody StudentDTO[] getAllUsers() {
+        return studentService.getAll();
     }
 
-
+    @ApiOperation(value="View all Classes a Student is registered", response = Class.class)
+    @GetMapping(path = "/{studentId}/classes")
+    public @ResponseBody ClassDTO[] getClasses(@PathVariable Integer studentId) {
+        return studentService.getAllClasses(studentId);
+    }
 
 }
