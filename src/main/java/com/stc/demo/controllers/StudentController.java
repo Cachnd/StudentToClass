@@ -2,6 +2,7 @@ package com.stc.demo.controllers;
 
 import com.stc.demo.entities.Student;
 import com.stc.demo.repositories.StudentRepository;
+import com.stc.demo.services.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private StudentService studentService;
+
     @ApiOperation(value="Create a Student", response = Student.class)
     @PostMapping(path = "/add")
     @ResponseStatus(HttpStatus.CREATED)
@@ -28,23 +32,14 @@ public class StudentController {
     @ApiOperation(value="View data from a single Student", response = Student.class)
     @GetMapping(path = "/get/{studentId}")
     public @ResponseBody Student getStudentById(@PathVariable Integer studentId) {
-        Optional<Student> student = studentRepository.findById(studentId);
-        if (!student.isPresent()){
-            return null;
-        }
-        return student.get();
+        return studentService.getStudentById(studentId);
     }
 
     @ApiOperation(value="Updates a Student data", response = Student.class)
     @PutMapping(path = "/update/{studentId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void updateStudent(@RequestBody Student student, @PathVariable Integer studentId) {
-        Optional<Student> s = studentRepository.findById(studentId);
-        if (s.isPresent()){
-            s.get().setFirstName(student.getFirstName());
-            s.get().setLastName((student.getLastName()));
-        }
-        studentRepository.save(s.get());
+        studentService.updateStudent(student, studentId);
     }
 
     @ApiOperation(value="Deletes a Student", response = void.class)
