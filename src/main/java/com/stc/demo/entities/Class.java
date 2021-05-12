@@ -1,11 +1,16 @@
 package com.stc.demo.entities;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "classes")
+@Getter @Setter @NoArgsConstructor
 public class Class {
 
     @Id
@@ -19,29 +24,6 @@ public class Class {
     @ManyToMany
     Set<Student> coursing = new HashSet<>();
 
-    public Class() {
-    }
-
-    public Integer getCode() {
-        return class_code;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public void addStudent(Student student){
         coursing.add(student);
     }
@@ -50,7 +32,4 @@ public class Class {
         coursing.remove(student);
     }
 
-    public Set<Student> getCoursing() {
-        return coursing;
-    }
 }

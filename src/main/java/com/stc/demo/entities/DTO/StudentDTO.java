@@ -1,11 +1,11 @@
 package com.stc.demo.entities.DTO;
 
 import com.stc.demo.entities.Student;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-
+@Setter @Getter @NoArgsConstructor
 public class StudentDTO {
 
     private Integer student_id;
@@ -14,30 +14,10 @@ public class StudentDTO {
 
     private String lastName;
 
-    public StudentDTO() {
-    }
     public StudentDTO(Student student) {
-        this.student_id = student.getId();
+        this.student_id = student.getStudent_id();
         this.firstName = student.getFirstName();
         this.lastName = student.getLastName();
-    }
-
-    public Integer getId() {
-        return student_id;
-    }
-
-    public String getFirstName(){ return firstName; }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
 }

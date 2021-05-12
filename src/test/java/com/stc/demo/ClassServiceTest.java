@@ -39,19 +39,19 @@ class ClassServiceTest {
 
     @AfterAll
     public void teardown(){
-        classRepository.deleteById(classroom.getCode());
+        classRepository.deleteById(classroom.getClass_code());
     }
 
     @Test
     public void testClassroom(){
-        Assert.assertNotNull(this.classroom.getCode());
+        Assert.assertNotNull(this.classroom.getClass_code());
     }
 
     @Test
     public void testGetAllClasses(){
         ClassDTO[] list = classService.getAll();
         ClassDTO other = list[list.length-1];
-        Assert.assertEquals("Test latest Class in All", classroom.getCode(), other.getCode());
+        Assert.assertEquals("Test latest Class in All", classroom.getClass_code(), other.getClass_code());
     }
 
 }
