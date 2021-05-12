@@ -27,28 +27,28 @@ public class ClassController {
     private ClassService classService;
 
     @ApiOperation(value="Create a Class", response = Class.class)
-    @PostMapping(path = "/add")
+    @PostMapping(path = "/")
     @ResponseStatus(HttpStatus.CREATED)
     public void addNewClass(@RequestBody Class classroom) {
         classRepository.save(classroom);
     }
 
     @ApiOperation(value="View data from a single Class", response = Student.class)
-    @GetMapping(path = "/get/{classId}")
+    @GetMapping(path = "/{classId}")
     public @ResponseBody
     ClassDTO getClassById(@PathVariable Integer classId) {
         return classService.getClassDTOById(classId);
     }
 
     @ApiOperation(value="Update a Class data", response = Class.class)
-    @PutMapping(path = "/update")
+    @PutMapping(path = "/")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void updateClass(@RequestBody Class classroom) {
         classRepository.save(classroom);
     }
 
     @ApiOperation(value="Deletes a Class", response = Class.class)
-    @DeleteMapping(value = "/delete/{classCode}")
+    @DeleteMapping(value = "/{classCode}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteClass(@PathVariable Integer classCode) {
         classRepository.deleteById(classCode);

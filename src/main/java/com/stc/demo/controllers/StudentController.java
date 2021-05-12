@@ -23,27 +23,27 @@ public class StudentController {
     private StudentService studentService;
 
     @ApiOperation(value="Create a Student", response = Student.class)
-    @PostMapping(path = "/add")
+    @PostMapping(path = "/")
     @ResponseStatus(HttpStatus.CREATED)
     public void addNewStudent(@RequestBody Student student) {
         studentRepository.save(student);
     }
 
     @ApiOperation(value="View data from a single Student", response = Student.class)
-    @GetMapping(path = "/get/{studentId}")
+    @GetMapping(path = "/{studentId}")
     public @ResponseBody StudentDTO getStudentById(@PathVariable Integer studentId) {
         return studentService.getStudentDTOById(studentId);
     }
 
     @ApiOperation(value="Updates a Student data", response = Student.class)
-    @PutMapping(path = "/update/{studentId}")
+    @PutMapping(path = "/{studentId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void updateStudent(@RequestBody Student student, @PathVariable Integer studentId) {
         studentService.updateStudent(student, studentId);
     }
 
     @ApiOperation(value="Deletes a Student", response = void.class)
-    @DeleteMapping(value = "/delete/{studentId}")
+    @DeleteMapping(value = "/{studentId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteStudent(@PathVariable Integer studentId) {
         studentRepository.deleteById(studentId);
