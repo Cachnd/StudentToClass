@@ -21,7 +21,7 @@ public class Class {
 
     private String description;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     Set<Student> coursing = new HashSet<>();
 
     public void addStudent(Student student){

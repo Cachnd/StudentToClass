@@ -21,7 +21,7 @@ public class Student {
 
     private String lastName;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "AssignedTo",
             joinColumns = @JoinColumn(name="student_id"),
