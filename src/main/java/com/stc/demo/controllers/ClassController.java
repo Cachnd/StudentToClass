@@ -41,10 +41,10 @@ public class ClassController {
     }
 
     @ApiOperation(value="Update a Class data", response = Class.class)
-    @PutMapping(path = "/")
+    @PutMapping(path = "/{classId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void updateClass(@RequestBody Class classroom) {
-        classRepository.save(classroom);
+    public void updateClass(@RequestBody ClassDTO classroom, @PathVariable Integer classId) {
+        classService.updateClass(classroom, classId);
     }
 
     @ApiOperation(value="Deletes a Class", response = Class.class)

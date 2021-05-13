@@ -38,7 +38,7 @@ public class StudentController {
     @ApiOperation(value="Updates a Student data", response = Student.class)
     @PutMapping(path = "/{studentId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void updateStudent(@RequestBody Student student, @PathVariable Integer studentId) {
+    public void updateStudent(@RequestBody StudentDTO student, @PathVariable Integer studentId) {
         studentService.updateStudent(student, studentId);
     }
 
