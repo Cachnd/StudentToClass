@@ -36,10 +36,10 @@ class StudentServiceTest {
         if (list.length > 0){
             student = list[0];
         }
-        Student otherStudent = studentService.getStudentById(student.getId());
+        Student otherStudent = studentService.getStudentById(student.getStudent_id());
         Assert.assertEquals("Same firstName", student.getFirstName(), otherStudent.getFirstName());
         Assert.assertEquals("Same lastName", student.getFirstName(), otherStudent.getFirstName());
-        Assert.assertEquals("Same id", student.getId(), otherStudent.getId());
+        Assert.assertEquals("Same id", student.getStudent_id(), otherStudent.getStudent_id());
     }
 
     @Test
@@ -48,17 +48,17 @@ class StudentServiceTest {
         student.setFirstName("TestingFirstName");
         student.setLastName("TestingLastName");
         studentRepository.save(student);
-        Student other = studentService.getStudentById(student.getId());
+        Student other = studentService.getStudentById(student.getStudent_id());
         boolean equals = true;
         if (!student.getFirstName().equals(other.getFirstName()))
             equals = false;
         if (!student.getLastName().equals(other.getLastName()))
             equals = false;
-        if (student.getId() != other.getId())
+        if (student.getStudent_id() != other.getStudent_id())
             equals = false;
         Assert.assertTrue("Test Add", equals);
-        studentRepository.deleteById(student.getId());
-        Assert.assertEquals("Test Delete", null, studentService.getStudentById(student.getId()));
+        studentRepository.deleteById(student.getStudent_id());
+        Assert.assertEquals("Test Delete", null, studentService.getStudentById(student.getStudent_id()));
     }
 
 }
